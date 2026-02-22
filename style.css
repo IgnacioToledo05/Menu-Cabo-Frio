@@ -99,15 +99,20 @@ body {
 
 .title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     letter-spacing: 3px;
     color: var(--white);
     text-shadow: 0 3px 15px rgba(0,0,0,0.5);
     text-align: center;
-    display: block;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     width: 100%;
     margin: 0 auto;
 }
+
 
 
 /* ========================================
