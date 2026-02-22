@@ -19,11 +19,12 @@
             <div class="logo-container">
                 <img src="LogoCabofrio.jpeg" alt="Logo Cabo Frío" class="logo">
             </div>
-            <h1 class="title">🌴 MENÚ PARADOR CABO FRÍO 🌴</h1>
+            <h1 class="title">🌴 MENÚ VIRTUAL CABO FRÍO 🌴</h1>
         </header>
 
         <!-- Categorías - Estilo Tablón de Madera -->
         <nav class="categories">
+            <!-- BOTÓN 1: PARA PICAR -->
             <button class="category-btn wood-btn active" data-category="minutas">
                 <span class="wood-icon">🌴</span>
                 <div class="wood-content">
@@ -38,6 +39,22 @@
                 </div>
             </button>
             
+            <!-- BOTÓN 2: SANDWICH (NUEVO) -->
+            <button class="category-btn wood-btn" data-category="sandwich">
+                <span class="wood-icon">🥪</span>
+                <div class="wood-content">
+                    <span class="wood-title">SANDWICH</span>
+                    <span class="wood-desc">Milanesas, Churrascos y más</span>
+                </div>
+                <div class="nails">
+                    <span class="nail nail-tl"></span>
+                    <span class="nail nail-tr"></span>
+                    <span class="nail nail-bl"></span>
+                    <span class="nail nail-br"></span>
+                </div>
+            </button>
+            
+            <!-- BOTÓN 3: BEBIDAS -->
             <button class="category-btn wood-btn" data-category="bebidas">
                 <span class="wood-icon">🥤</span>
                 <div class="wood-content">
@@ -52,6 +69,7 @@
                 </div>
             </button>
             
+            <!-- BOTÓN 4: PROMOS -->
             <button class="category-btn wood-btn" data-category="promos">
                 <span class="wood-icon">🔥</span>
                 <div class="wood-content">
@@ -66,6 +84,7 @@
                 </div>
             </button>
             
+            <!-- BOTÓN 5: TRAGOS -->
             <button class="category-btn wood-btn" data-category="tragos">
                 <span class="wood-icon">🍹</span>
                 <div class="wood-content">
@@ -83,9 +102,10 @@
 
         <!-- Contenido de Categorías -->
         <main class="menu-content">
-            <!-- MINUTAS -->
-            <section id="minutas" class="category-section active">
-                <h2 class="section-title">🌴 PARA PICAR 🌴</h2>
+            
+            <!-- SECCIÓN 1: PARA PICAR -->
+            <section id="minutas" class="category-section">
+                <h2 class="section-title">PARA PICAR 🌴</h2>
                 
                 <div class="menu-grid">
                     <div class="menu-item">
@@ -137,52 +157,48 @@
                         <div class="item-info"><h3>Merluza con papas fritas</h3><p class="price">$15.900</p></div>
                     </div>
                 </div>
-
-                <!-- Sub-Categoría: Sandwich -->
-                <div class="sub-category">
-                    <button class="sub-category-btn">
-                        <span class="icon">🥪</span>
-                        <span>SANDWICH</span>
-                        <span class="arrow">▼</span>
-                    </button>
-                    <div class="sub-category-content">
-                        <div class="menu-grid">
-                            <div class="menu-item">
-                                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=200" alt="Milanesa" class="item-img">
-                                <div class="item-info"><h3>Sándwich de milanesa simple</h3><p class="description">Suprema</p><p class="price">$7.500</p></div>
-                            </div>
-                            <div class="menu-item">
-                                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=200" alt="Milanesa completa" class="item-img">
-                                <div class="item-info"><h3>Sándwich de milanesa completa</h3><p class="description">Jamón queso, lechuga, tomate, supreme</p><p class="price">$7.500</p></div>
-                            </div>
-                            <div class="menu-item">
-                                <img src="https://images.unsplash.com/photo-1619096252214-23b30d5c38a9?w=200" alt="Jamón y queso" class="item-img">
-                                <div class="item-info"><h3>Sándwich jamón y queso</h3><p class="price">$6.500</p></div>
-                            </div>
-                            <div class="menu-item">
-                                <img src="https://images.unsplash.com/photo-1619096252214-23b30d5c38a9?w=200" alt="Natural" class="item-img">
-                                <div class="item-info"><h3>Sándwich natural</h3><p class="price">$7.500</p></div>
-                            </div>
-                            <div class="menu-item">
-                                <img src="https://images.unsplash.com/photo-1619096252214-23b30d5c38a9?w=200" alt="Crudo y queso" class="item-img">
-                                <div class="item-info"><h3>Sándwich de jamón crudo y queso</h3><p class="description">Jamón, queso, lechuga, tomate</p><p class="price">$10.000</p></div>
-                            </div>
-                            <div class="menu-item">
-                                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=200" alt="Churrasco" class="item-img">
-                                <div class="item-info"><h3>Sándwich de churrasco simple</h3><p class="price">$10.000</p></div>
-                            </div>
-                            <div class="menu-item">
-                                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=200" alt="Churrasco completo" class="item-img">
-                                <div class="item-info"><h3>Sándwich de churrasco completo</h3><p class="description">Jamón, queso, lechuga y tomate</p><p class="price">$12.000</p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- CIERRE DEL MENU-GRID DE MINUTAS -->
             </section>
 
-            <!-- BEBIDAS -->
+            <!-- SECCIÓN 2: SANDWICH (CORREGIDA) -->
+            <section id="sandwich" class="category-section">
+                <h2 class="section-title">SANDWICHES 🥪</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=200" alt="Milanesa" class="item-img">
+                        <div class="item-info"><h3>Sándwich de milanesa simple</h3><p class="description">Suprema</p><p class="price">$7.500</p></div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=200" alt="Milanesa completa" class="item-img">
+                        <div class="item-info"><h3>Sándwich de milanesa completa</h3><p class="description">Jamón queso, lechuga, tomate, supreme</p><p class="price">$7.500</p></div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1619096252214-23b30d5c38a9?w=200" alt="Jamón y queso" class="item-img">
+                        <div class="item-info"><h3>Sándwich jamón y queso</h3><p class="price">$6.500</p></div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1619096252214-23b30d5c38a9?w=200" alt="Natural" class="item-img">
+                        <div class="item-info"><h3>Sándwich natural</h3><p class="price">$7.500</p></div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1619096252214-23b30d5c38a9?w=200" alt="Crudo y queso" class="item-img">
+                        <div class="item-info"><h3>Sándwich de jamón crudo y queso</h3><p class="description">Jamón, queso, lechuga, tomate</p><p class="price">$10.000</p></div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=200" alt="Churrasco" class="item-img">
+                        <div class="item-info"><h3>Sándwich de churrasco simple</h3><p class="price">$10.000</p></div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=200" alt="Churrasco completo" class="item-img">
+                        <div class="item-info"><h3>Sándwich de churrasco completo</h3><p class="description">Jamón, queso, lechuga y tomate</p><p class="price">$12.000</p></div>
+                    </div>
+                </div>
+                <!-- CIERRE DEL MENU-GRID DE SANDWICH -->
+            </section>
+
+            <!-- SECCIÓN 3: BEBIDAS -->
             <section id="bebidas" class="category-section">
-                <h2 class="section-title">🥤 BEBIDAS 🥤</h2>
+                <h2 class="section-title">BEBIDAS 🥤</h2>
                 <div class="menu-grid">
                     <div class="menu-item">
                         <img src="https://images.unsplash.com/photo-1581006852262-e4307cf6283a?w=200" alt="Gaseosa grande" class="item-img">
@@ -211,9 +227,9 @@
                 </div>
             </section>
 
-            <!-- PROMOS -->
+            <!-- SECCIÓN 4: PROMOS -->
             <section id="promos" class="category-section">
-                <h2 class="section-title">🔥 PROMOS!!! 🔥</h2>
+                <h2 class="section-title">PROMOS!!! 🔥</h2>
                 <div class="menu-grid">
                     <div class="menu-item promo">
                         <div class="promo-badge">Para 3</div>
@@ -238,9 +254,9 @@
                 </div>
             </section>
 
-            <!-- TRAGOS -->
+            <!-- SECCIÓN 5: TRAGOS -->
             <section id="tragos" class="category-section">
-                <h2 class="section-title">🍹 TRAGOS 🍹</h2>
+                <h2 class="section-title">TRAGOS 🍹</h2>
                 <div class="menu-grid">
                     <div class="menu-item">
                         <img src="https://images.unsplash.com/photo-1587223962930-cb7f31384c19?w=200" alt="Daikiri" class="item-img">
