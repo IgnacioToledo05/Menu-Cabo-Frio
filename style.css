@@ -1,19 +1,21 @@
 /* ========================================
    ESTILOS - PARADOR CABO FRÍO
-   Diseño: Rústico de Playa
+   Diseño: Rústico de Playa con Textura Real
    ======================================== */
 
 /* Variables CSS */
 :root {
-    --wood-dark: #5D4037;
-    --wood-medium: #6D4C41;
-    --wood-light: #8D6E63;
+    --wood-dark: #8B7355;
+    --wood-medium: #A0896C;
+    --wood-light: #C4A77D;
+    --wood-texture: #D4B896;
+    --text-wood: #2D1810;
+    --text-wood-light: #5D4037;
     --white: #FFFFFF;
     --white-bone: #FFF8E7;
-    --orange-accent: #FF8C00;
-    --text-dark: #3E2723;
-    --text-light: #5D4037;
-    --shadow-relief: 0 4px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+    --orange-accent: #E07020;
+    --shadow-relief: 0 8px 20px rgba(0,0,0,0.4);
+    --shadow-nail: inset 0 2px 4px rgba(0,0,0,0.5);
     --transition: all 0.3s ease;
 }
 
@@ -24,26 +26,19 @@
     box-sizing: border-box;
 }
 
-/* Fondo de atardecer en playa */
+/* Fondo de playa real con blur */
 .beach-background {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(180deg, 
-        #1a1a2e 0%, 
-        #16213e 20%, 
-        #0f3460 40%, 
-        #e94560 70%, 
-        #ff6b35 85%, 
-        #ffc947 100%
-    );
-    background-attachment: fixed;
+    background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920') center/cover no-repeat fixed;
+    filter: blur(3px);
     z-index: -3;
 }
 
-/* Overlay para legibilidad */
+/* Overlay muy sutil para legibilidad */
 .beach-background::after {
     content: '';
     position: absolute;
@@ -51,18 +46,18 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,248,240,0.12);
 }
 
-/* Efecto arena sutil */
+/* Efecto arena sutil en la parte inferior */
 .beach-background::before {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 25%;
-    background: linear-gradient(to top, rgba(194,178,128,0.15), transparent);
+    height: 20%;
+    background: linear-gradient(to top, rgba(194,178,128,0.2), transparent);
 }
 
 /* Animación de olas */
@@ -71,7 +66,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 100px;
+    height: 80px;
     overflow: hidden;
     pointer-events: none;
     z-index: -2;
@@ -82,16 +77,16 @@
     bottom: 0;
     left: 0;
     width: 200%;
-    height: 80px;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 80' preserveAspectRatio='none'%3E%3Cpath d='M0,40 Q150,80 300,40 T600,40 T900,40 T1200,40 L1200,80 L0,80 Z' fill='%23e8dcc8' opacity='0.2'/%3E%3C/svg%3E") repeat-x;
-    background-size: 600px 80px;
-    animation: wave-animation 10s linear infinite;
+    height: 60px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0,30 Q150,50 300,30 T600,30 T900,30 T1200,30 L1200,60 L0,60 Z' fill='%23e8dcc8' opacity='0.25'/%3E%3C/svg%3E") repeat-x;
+    background-size: 600px 60px;
+    animation: wave-animation 12s linear infinite;
 }
 
 .wave:nth-child(2) {
-    bottom: 8px;
+    bottom: 6px;
     opacity: 0.5;
-    animation: wave-animation 7s linear infinite reverse;
+    animation: wave-animation 8s linear infinite reverse;
 }
 
 @keyframes wave-animation {
@@ -103,8 +98,8 @@
 body {
     font-family: 'Montserrat', sans-serif;
     min-height: 100vh;
-    color: var(--text-dark);
-    line-height: 1.6;
+    color: var(--text-wood);
+    line-height: 1.5;
 }
 
 .menu-container {
@@ -136,30 +131,29 @@ body {
 }
 
 .title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 700;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 3px;
     color: var(--white);
-    text-shadow: 0 2px 10px rgba(0,0,0,0.4);
-    letter-spacing: 1px;
+    text-shadow: 0 3px 15px rgba(0,0,0,0.5);
 }
 
-/* Botones de categorías - Estilo Tablón de Madera */
+/* Botones - Estilo Tablón de Madera Real */
 .categories {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
     margin-bottom: 25px;
 }
 
 .category-btn.wood-btn {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 14px 18px;
-    background: linear-gradient(135deg, var(--wood-medium) 0%, var(--wood-dark) 100%);
+    gap: 14px;
+    padding: 16px 18px;
+    background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400') center/cover;
     border: none;
-    border-radius: 12px;
+    border-radius: 8px;
     cursor: pointer;
     transition: var(--transition);
     box-shadow: var(--shadow-relief);
@@ -167,8 +161,20 @@ body {
     overflow: hidden;
 }
 
-/* Vetas de madera simuladas */
+/* Overlay para oscurecer la madera y hacer legible el texto */
 .category-btn.wood-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(45,24,16,0.35), rgba(45,24,16,0.5));
+    pointer-events: none;
+}
+
+/* Vetas de madera simuladas */
+.category-btn.wood-btn::after {
     content: '';
     position: absolute;
     top: 0;
@@ -178,49 +184,80 @@ body {
     background: repeating-linear-gradient(
         90deg,
         transparent,
-        transparent 30px,
-        rgba(0,0,0,0.05) 30px,
-        rgba(0,0,0,0.05) 32px
+        transparent 40px,
+        rgba(0,0,0,0.03) 40px,
+        rgba(0,0,0,0.03) 42px
     );
     pointer-events: none;
 }
 
 .category-btn.wood-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
-    background: linear-gradient(135deg, var(--wood-light) 0%, var(--wood-medium) 100%);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.5);
 }
 
 .category-btn.wood-btn.active {
-    background: linear-gradient(135deg, var(--wood-dark) 0%, #4E342E 100%);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 2px 4px rgba(0,0,0,0.3);
+    background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400') center/cover;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.55);
 }
 
+.category-btn.wood-btn.active::before {
+    background: linear-gradient(135deg, rgba(45,24,16,0.45), rgba(45,24,16,0.6));
+}
+
+/* Clavos en las esquinas */
+.nails {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.nail {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #4a4a4a, #1a1a1a);
+    box-shadow: var(--shadow-nail);
+}
+
+.nail-tl { top: 6px; left: 6px; }
+.nail-tr { top: 6px; right: 6px; }
+.nail-bl { bottom: 6px; left: 6px; }
+.nail-br { bottom: 6px; right: 6px; }
+
 .wood-icon {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     flex-shrink: 0;
+    position: relative;
+    z-index: 1;
 }
 
 .wood-content {
     display: flex;
     flex-direction: column;
     text-align: left;
+    position: relative;
+    z-index: 1;
+    flex: 1;
 }
 
 .wood-title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--white);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: var(--text-wood);
+    text-shadow: 0 1px 2px rgba(255,255,255,0.3);
 }
 
 .wood-desc {
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.75rem;
-    color: var(--white-bone);
-    opacity: 0.85;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    color: var(--text-wood-light);
+    opacity: 0.9;
 }
 
 /* Contenido del menú */
@@ -243,13 +280,13 @@ body {
 }
 
 .section-title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
     color: var(--white);
     text-align: center;
     margin-bottom: 18px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    text-shadow: 0 3px 12px rgba(0,0,0,0.5);
 }
 
 /* Grid de items */
@@ -265,15 +302,15 @@ body {
     align-items: center;
     gap: 12px;
     padding: 12px;
-    background: rgba(255,255,255,0.92);
+    background: rgba(255,255,255,0.94);
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
     transition: var(--transition);
 }
 
 .menu-item:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.18);
 }
 
 .menu-item.promo {
@@ -286,11 +323,11 @@ body {
     right: 8px;
     background: var(--orange-accent);
     color: var(--white);
-    font-size: 0.6rem;
-    font-weight: 700;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 1px;
     padding: 3px 8px;
-    border-radius: 10px;
-    text-transform: uppercase;
+    border-radius: 8px;
 }
 
 .item-img {
@@ -308,16 +345,16 @@ body {
 
 .item-info h3 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    color: var(--text-dark);
+    color: var(--text-wood);
     margin-bottom: 2px;
 }
 
 .item-info .description {
     font-family: 'Roboto', sans-serif;
     font-size: 0.7rem;
-    color: var(--text-light);
+    color: var(--text-wood-light);
     margin-bottom: 2px;
 }
 
@@ -340,20 +377,40 @@ body {
     justify-content: center;
     gap: 10px;
     padding: 14px;
-    background: linear-gradient(135deg, var(--wood-medium) 0%, var(--wood-dark) 100%);
+    background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400') center/cover;
     border: none;
-    border-radius: 12px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--white);
+    border-radius: 8px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    color: var(--text-wood);
     cursor: pointer;
     box-shadow: var(--shadow-relief);
+    position: relative;
+}
+
+.sub-category-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(45,24,16,0.35), rgba(45,24,16,0.5));
+    pointer-events: none;
+    border-radius: 8px;
 }
 
 .sub-category-btn .arrow {
     font-size: 0.7rem;
+    position: relative;
+    z-index: 1;
     transition: var(--transition);
+}
+
+.sub-category-btn span:not(.arrow) {
+    position: relative;
+    z-index: 1;
 }
 
 .sub-category-btn.active .arrow {
@@ -364,7 +421,7 @@ body {
     display: none;
     margin-top: 12px;
     padding: 12px;
-    background: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.35);
     border-radius: 12px;
 }
 
@@ -388,19 +445,19 @@ body {
 
 .menu-footer p {
     margin-bottom: 3px;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
 
 /* Responsive */
 @media (min-width: 768px) {
     .menu-container { max-width: 560px; padding: 30px 20px; }
     .logo { width: 130px; height: 130px; }
-    .title { font-size: 1.9rem; }
-    .category-btn.wood-btn { padding: 16px 22px; }
-    .wood-icon { font-size: 2rem; }
-    .wood-title { font-size: 1.2rem; }
+    .title { font-size: 2.4rem; }
+    .category-btn.wood-btn { padding: 18px 24px; }
+    .wood-icon { font-size: 2.1rem; }
+    .wood-title { font-size: 1.6rem; }
     .item-img { width: 60px; height: 60px; }
-    .item-info h3 { font-size: 1rem; }
+    .item-info h3 { font-size: 0.95rem; }
 }
 
 @media (min-width: 1200px) {
