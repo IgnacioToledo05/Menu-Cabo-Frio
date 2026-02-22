@@ -52,23 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ========================================
-    // ACORDEÓN DE SUB-CATEGORÍAS
-    // ========================================
-    
-    const subCategoryBtns = document.querySelectorAll('.sub-category-btn');
-
-    subCategoryBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Toggle clase active del botón
-            btn.classList.toggle('active');
-
-            // Toggle clase show del contenido
-            const content = btn.nextElementSibling;
-            content.classList.toggle('show');
-        });
-    });
-
-    // ========================================
     // ANIMACIONES ADICIONALES
     // ========================================
 
