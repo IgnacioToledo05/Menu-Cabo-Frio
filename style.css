@@ -74,7 +74,13 @@ body {
 .menu-header {
     text-align: center;
     margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center
 }
+
+
 
 .logo-container {
     display: flex;
@@ -93,11 +99,16 @@ body {
 
 .title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
+    font-size: 1.8rem;
     letter-spacing: 3px;
     color: var(--white);
     text-shadow: 0 3px 15px rgba(0,0,0,0.5);
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
 }
+
 
 /* ========================================
    BOTONES - ESTILO TABLÓN DE MADERA RÚSTICA
