@@ -1,48 +1,112 @@
 /* ========================================
-   ESTILOS - MENÚ DIGITAL CABO FRÍO
-   Diseño: Sunset Lounge Premium
+   ESTILOS - PARADOR CABO FRÍO
+   Diseño: Rústico de Playa
    ======================================== */
 
 /* Variables CSS */
 :root {
-    --primary-orange: #d4856a;
-    --coral: #e5a398;
-    --cream: #fdf8f3;
-    --white: #fefefe;
-    --white-glass: rgba(253, 248, 243, 0.75);
-    --white-glass-hover: rgba(255, 255, 255, 0.92);
-    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.08);
-    --shadow-elevated: 0 8px 30px rgba(0, 0, 0, 0.12);
-    --text-dark: #3d3d3d;
-    --text-light: #666666;
-    --border-radius: 50px;
+    --wood-dark: #5D4037;
+    --wood-medium: #6D4C41;
+    --wood-light: #8D6E63;
+    --white: #FFFFFF;
+    --white-bone: #FFF8E7;
+    --orange-accent: #FF8C00;
+    --text-dark: #3E2723;
+    --text-light: #5D4037;
+    --shadow-relief: 0 4px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
     --transition: all 0.3s ease;
 }
 
-/* Reset y base */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
-    background: linear-gradient(
-        180deg,
-        #9a82a0 0%,
-        #c49098 25%,
-        #e5a398 50%,
-        #f0b8a8 75%,
-        #fbd3b6 100%
+/* Fondo de atardecer en playa */
+.beach-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, 
+        #1a1a2e 0%, 
+        #16213e 20%, 
+        #0f3460 40%, 
+        #e94560 70%, 
+        #ff6b35 85%, 
+        #ffc947 100%
     );
     background-attachment: fixed;
+    z-index: -3;
+}
+
+/* Overlay para legibilidad */
+.beach-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.1);
+}
+
+/* Efecto arena sutil */
+.beach-background::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 25%;
+    background: linear-gradient(to top, rgba(194,178,128,0.15), transparent);
+}
+
+/* Animación de olas */
+.waves-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -2;
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 80px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 80' preserveAspectRatio='none'%3E%3Cpath d='M0,40 Q150,80 300,40 T600,40 T900,40 T1200,40 L1200,80 L0,80 Z' fill='%23e8dcc8' opacity='0.2'/%3E%3C/svg%3E") repeat-x;
+    background-size: 600px 80px;
+    animation: wave-animation 10s linear infinite;
+}
+
+.wave:nth-child(2) {
+    bottom: 8px;
+    opacity: 0.5;
+    animation: wave-animation 7s linear infinite reverse;
+}
+
+@keyframes wave-animation {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-600px); }
+}
+
+/* Body y contenedor principal */
+body {
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
     color: var(--text-dark);
     line-height: 1.6;
 }
 
-/* Contenedor principal */
 .menu-container {
     max-width: 480px;
     margin: 0 auto;
@@ -53,85 +117,115 @@ body {
 /* Header */
 .menu-header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .logo-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .logo {
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid var(--white);
-    box-shadow: var(--shadow-soft);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 .title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
     color: var(--white);
-    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
-    margin-bottom: 5px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.4);
     letter-spacing: 1px;
 }
 
-.subtitle {
-    font-size: 0.9rem;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.85);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-}
-
-/* Navegación de categorías */
+/* Botones de categorías - Estilo Tablón de Madera */
 .categories {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 30px;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
 }
 
-.category-btn {
+.category-btn.wood-btn {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    background: var(--white-glass);
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    border-radius: var(--border-radius);
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--text-dark);
+    gap: 15px;
+    padding: 14px 18px;
+    background: linear-gradient(135deg, var(--wood-medium) 0%, var(--wood-dark) 100%);
+    border: none;
+    border-radius: 12px;
     cursor: pointer;
     transition: var(--transition);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-relief);
+    position: relative;
+    overflow: hidden;
 }
 
-.category-btn:hover {
+/* Vetas de madera simuladas */
+.category-btn.wood-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 30px,
+        rgba(0,0,0,0.05) 30px,
+        rgba(0,0,0,0.05) 32px
+    );
+    pointer-events: none;
+}
+
+.category-btn.wood-btn:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-elevated);
-    background: var(--white-glass-hover);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+    background: linear-gradient(135deg, var(--wood-light) 0%, var(--wood-medium) 100%);
 }
 
-.category-btn.active {
-    background: var(--white);
-    border-color: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
-    font-weight: 600;
+.category-btn.wood-btn.active {
+    background: linear-gradient(135deg, var(--wood-dark) 0%, #4E342E 100%);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5), inset 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.wood-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+}
+
+.wood-content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.wood-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.wood-desc {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.75rem;
+    color: var(--white-bone);
+    opacity: 0.85;
 }
 
 /* Contenido del menú */
 .menu-content {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .category-section {
@@ -149,20 +243,19 @@ body {
 }
 
 .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
     color: var(--white);
     text-align: center;
-    margin-bottom: 20px;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
-    letter-spacing: 1px;
+    margin-bottom: 18px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.4);
 }
 
-/* Grid de elementos del menú */
+/* Grid de items */
 .menu-grid {
     display: grid;
-    gap: 14px;
+    gap: 12px;
 }
 
 /* Items del menú */
@@ -170,51 +263,41 @@ body {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 14px;
-    background: var(--white-glass);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255,255,255,0.92);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: var(--transition);
-    cursor: pointer;
 }
 
 .menu-item:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-elevated);
-    background: var(--white-glass-hover);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .menu-item.promo {
-    border: 2px solid var(--primary-orange);
-    background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(252,240,232,0.85) 100%);
+    border: 2px solid var(--orange-accent);
 }
 
 .promo-badge {
     position: absolute;
     top: -8px;
-    right: 10px;
-    background: var(--primary-orange);
+    right: 8px;
+    background: var(--orange-accent);
     color: var(--white);
-    font-size: 0.65rem;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 20px;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
-.item-image {
-    width: 56px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #fff8f3 0%, #fcefe5 100%);
-    border-radius: 12px;
-    font-size: 1.6rem;
+.item-img {
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+    object-fit: cover;
     flex-shrink: 0;
 }
 
@@ -224,27 +307,30 @@ body {
 }
 
 .item-info h3 {
-    font-size: 0.95rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--text-dark);
-    margin-bottom: 3px;
+    margin-bottom: 2px;
 }
 
 .item-info .description {
-    font-size: 0.8rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.7rem;
     color: var(--text-light);
-    margin-bottom: 3px;
+    margin-bottom: 2px;
 }
 
 .item-info .price {
-    font-size: 1.1rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
     font-weight: 700;
-    color: var(--primary-orange);
+    color: var(--orange-accent);
 }
 
-/* Sub-categoría Sandwich */
+/* Sub-categoría */
 .sub-category {
-    margin-top: 22px;
+    margin-top: 20px;
 }
 
 .sub-category-btn {
@@ -254,25 +340,19 @@ body {
     justify-content: center;
     gap: 10px;
     padding: 14px;
-    background: var(--white-glass);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 16px;
-    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--wood-medium) 0%, var(--wood-dark) 100%);
+    border: none;
+    border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
     font-weight: 600;
-    color: var(--text-dark);
+    color: var(--white);
     cursor: pointer;
-    transition: var(--transition);
-    backdrop-filter: blur(10px);
-}
-
-.sub-category-btn:hover {
-    background: var(--white-glass-hover);
-    box-shadow: var(--shadow-soft);
+    box-shadow: var(--shadow-relief);
 }
 
 .sub-category-btn .arrow {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     transition: var(--transition);
 }
 
@@ -282,11 +362,10 @@ body {
 
 .sub-category-content {
     display: none;
-    margin-top: 14px;
-    padding: 14px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    backdrop-filter: blur(6px);
+    margin-top: 12px;
+    padding: 12px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 12px;
 }
 
 .sub-category-content.show {
@@ -302,138 +381,28 @@ body {
 /* Footer */
 .menu-footer {
     text-align: center;
-    padding: 22px;
-    color: rgba(255, 255, 255, 0.85);
+    padding: 18px;
+    color: var(--white);
     font-size: 0.85rem;
 }
 
 .menu-footer p {
-    margin-bottom: 4px;
-    font-weight: 300;
+    margin-bottom: 3px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
-/* ========================================
-   RESPONSIVE
-   ======================================== */
+/* Responsive */
 @media (min-width: 768px) {
-    .menu-container { max-width: 580px; padding: 35px 20px; }
-    .logo { width: 140px; height: 140px; }
-    .title { font-size: 2.2rem; }
-    .category-btn { padding: 14px 28px; font-size: 0.9rem; }
-    .menu-item { padding: 16px; }
-    .item-image { width: 65px; height: 65px; font-size: 1.8rem; }
+    .menu-container { max-width: 560px; padding: 30px 20px; }
+    .logo { width: 130px; height: 130px; }
+    .title { font-size: 1.9rem; }
+    .category-btn.wood-btn { padding: 16px 22px; }
+    .wood-icon { font-size: 2rem; }
+    .wood-title { font-size: 1.2rem; }
+    .item-img { width: 60px; height: 60px; }
+    .item-info h3 { font-size: 1rem; }
 }
 
 @media (min-width: 1200px) {
-    .menu-container { max-width: 650px; padding: 45px 20px; }
+    .menu-container { max-width: 620px; padding: 40px 20px; }
 }
-
-/* ========================================
-   PALMERAS DECORATIVAS - Diseño Premium 
-   ======================================== */
-.palm-tree {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: -1;
-    overflow: hidden;
-}
-
-/* ========================================
-   PALMERAS DECORATIVAS - Efecto Natural Premium
-   ======================================== 
-.palm-tree {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: -1;
-    overflow: hidden;
-}
-
-/* Palma izquierda - Efecto sombra natural 
-.palm-tree-left {
-    position: absolute;
-    top: -50px;
-    left: -60px;
-    width: 50vw;
-    max-width: 450px;
-    height: 450px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cdefs%3E%3ClinearGradient id='palmL' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232D1A0A' stop-opacity='0.3'/%3E%3Cstop offset='40%25' stop-color='%232D1A0A' stop-opacity='0.18'/%3E%3Cstop offset='100%25' stop-color='%232D1A0A' stop-opacity='0.02'/%3E%3C/linearGradient%3E%3Cfilter id='blur'%3E%3CfeGaussianBlur in='SourceGraphic' stdDeviation='1.5'/%3E%3C/filter%3E%3C/defs%3E%3Cg fill='url(%23palmL)' filter='url(%23blur)'%3E%3C!-- Tronco --%3E%3Cpath d='M130 400 Q120 300 110 200 Q105 130 120 80 L125 80 Q110 130 115 200 Q125 300 135 400 Z'/%3E%3C!-- Hojas principales arqueadas --%3E%3Cpath d='M120 200 Q80 140 50 90 Q10 30 70 15 Q120 25 160 70 Q200 120 220 200 Q190 240 150 260 Q100 220 120 200'/%3E%3Cpath d='M118 170 Q70 100 30 40 Q-20 10 40 0 Q100 15 145 70 Q185 130 205 210 Q170 240 135 210 Q85 170 118 170'/%3E%3Cpath d='M115 140 Q55 65 10 10 Q-45 -15 15 -10 Q80 10 125 70 Q165 130 185 220 Q150 250 115 215 Q60 170 115 140'/%3E%3Cpath d='M110 110 Q40 35 -10 -10 Q-55 -25 -15 -15 Q55 10 100 70 Q140 130 160 230 Q125 255 95 215 Q45 165 110 110'/%3E%3Cpath d='M115 230 Q65 180 25 120 Q-15 60 40 35 Q95 45 135 100 Q175 160 195 260 Q160 290 120 250 Q65 200 115 230'/%3E%3Cpath d='M118 200 Q55 140 10 80 Q-35 20 25 5 Q85 20 125 80 Q165 145 180 240 Q145 270 110 230 Q55 185 118 200'/%3E%3C/g%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: top left;
-    opacity: 0.2;
-    transform: rotate(-6deg);
-    filter: blur(2px);
-}
-    
-/* Palma derecha - Espejada 
-.palm-tree-right {
-    position: absolute;
-    top: -50px;
-    right: -60px;
-    width: 50vw;
-    max-width: 450px;
-    height: 450px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cdefs%3E%3ClinearGradient id='palmR' x1='100%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%232D1A0A' stop-opacity='0.3'/%3E%3Cstop offset='40%25' stop-color='%232D1A0A' stop-opacity='0.18'/%3E%3Cstop offset='100%25' stop-color='%232D1A0A' stop-opacity='0.02'/%3E%3C/linearGradient%3E%3Cfilter id='blur2'%3E%3CfeGaussianBlur in='SourceGraphic' stdDeviation='1.5'/%3E%3C/filter%3E%3C/defs%3E%3Cg fill='url(%23palmR)' filter='url(%23blur2)'%3E%3C!-- Tronco --%3E%3Cpath d='M130 400 Q120 300 110 200 Q105 130 120 80 L125 80 Q110 130 115 200 Q125 300 135 400 Z'/%3E%3C!-- Hojas principales arqueadas --%3E%3Cpath d='M120 200 Q80 140 50 90 Q10 30 70 15 Q120 25 160 70 Q200 120 220 200 Q190 240 150 260 Q100 220 120 200'/%3E%3Cpath d='M118 170 Q70 100 30 40 Q-20 10 40 0 Q100 15 145 70 Q185 130 205 210 Q170 240 135 210 Q85 170 118 170'/%3E%3Cpath d='M115 140 Q55 65 10 10 Q-45 -15 15 -10 Q80 10 125 70 Q165 130 185 220 Q150 250 115 215 Q60 170 115 140'/%3E%3Cpath d='M110 110 Q40 35 -10 -10 Q-55 -25 -15 -15 Q55 10 100 70 Q140 130 160 230 Q125 255 95 215 Q45 165 110 110'/%3E%3Cpath d='M115 230 Q65 180 25 120 Q-15 60 40 35 Q95 45 135 100 Q175 160 195 260 Q160 290 120 250 Q65 200 115 230'/%3E%3Cpath d='M118 200 Q55 140 10 80 Q-35 20 25 5 Q85 20 125 80 Q165 145 180 240 Q145 270 110 230 Q55 185 118 200'/%3E%3C/g%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: top right;
-    opacity: 0.2;
-    transform: scaleX(-1) rotate(-15deg);
-    filter: blur(2px);
-}
-
-/* Estilo para imágenes de platos */
-.item-img {
-    width: 60px;
-    height: 60px;
-    border-radius: 12px;
-    object-fit: cover;
-    flex-shrink: 0;
-}
-
-@media (min-width: 768px) {
-    .item-img {
-        width: 70px;
-        height: 70px;
-    }
-}
-
-/* Textura de arena */
-body::after {
-    content: '';
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 30%;
-    background: url('textura-arena.png') repeat;
-    opacity: 0.08;
-    pointer-events: none;
-    z-index: -1;
-}
-
-/* Olas animadas */
-.waves {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background: url('olas-animadas.svg');
-    opacity: 0.15;
-    animation: wave 3s infinite ease-in-out;
-}
-
-@keyframes wave {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(-20px); }
-}
-
